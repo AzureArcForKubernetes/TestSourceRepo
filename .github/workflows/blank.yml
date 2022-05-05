@@ -26,9 +26,10 @@ jobs:
         run: |
           git clone git@github.com:AzureArcForKubernetes/TestGitOpsRepo.git
           cd TestGitOpsRepo
-          mkdir manifests -p
           ls $GITHUB_WORKSPACE
-          cp $GITHUB_WORKSPACE/manifests/* manifests/
+          rm manifests -r
+          mkdir manifests -p
+          cp $GITHUB_WORKSPACE/manifests/* manifests -r
           git checkout master
           git config --global user.email "testuser@example.com"
           git config --global user.name "Test User"
