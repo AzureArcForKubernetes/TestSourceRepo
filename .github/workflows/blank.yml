@@ -21,13 +21,15 @@ jobs:
       - name: Install SSH Client 🔑
         uses: webfactory/ssh-agent@v0.5.4
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}        
       - name: Push updates to repo
         run: |
           git clone git@github.com:AzureArcForKubernetes/TestGitOpsRepo.git
           cd TestGitOpsRepo
+          mkdir manifests -p
+          ls $GITHUB_WORKSPACE
+          cp $GITHUB_WORKSPACE/manifests/* manifests/
           git checkout master
-          touch special_file
           git config --global user.email "testuser@example.com"
           git config --global user.name "Test User"
           git add .
