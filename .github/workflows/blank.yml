@@ -29,10 +29,10 @@ jobs:
         run: |
           git clone git@github.com:AzureArcForKubernetes/TestGitOpsRepo.git
           cd TestGitOpsRepo
-          git checkout staging
+          git checkout production
           touch special_file
           git config --global user.email "testuser@example.com"
           git config --global user.name "Test User"
           git add .
           git commit -m "Attempting to add special file to protected branch"
-          git push --set-upstream origin staging
+          git push --set-upstream origin production
