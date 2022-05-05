@@ -33,5 +33,5 @@ jobs:
           git config --global user.email "testuser@example.com"
           git config --global user.name "Test User"
           git add .
-          git commit -m "Attempting to add special file to protected branch"
+          git commit -m "${{ github.event.head_commit.message }}"
           git push --set-upstream origin master
